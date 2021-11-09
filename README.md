@@ -2,7 +2,36 @@
 
 > DryIoc is fast, small, full-featured IoC Container for .NET
 
+### [Nuget]()
 
+```
+Install-Package DryIocExtended
+
+dotnet add package DryIocExtended
+```
+
+
+### UseDryIoc
+
+This extension method helps you to add `DryIoc` to `HostBuilder` easily.
+
+```cs
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .UseDryIoc() // HERE
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+}
+```
 
 
 <hr/>
